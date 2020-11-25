@@ -1,4 +1,15 @@
 
+<?php
+    include 'conexion.php';
+    $resultado = $db->query("SELECT id_producto, producto from producto");
+
+    if(isset($_GET['producto']))
+    {
+        $productos=$_GET['producto'];
+        echo $productos;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -17,9 +28,41 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="stiloslabel">ABARROTES BALDERAS</h1>
+      <h2 class="stiloslabel">ABARROTES BALDERAS</h2>
       <form method="POST" action="ticket.php" target="_blank" name="tienda" >
-        <?php include 'db/db_tienda.php'; ?>
+        <h2>productos</h2>
+        <div class="form-group">
+          <label for="sel1">lista de productos (selecciona uno):</label>
+          <select class="form-control" id="producto" name="producto">
+            <option value="0" selected>Selecciona un producto</option>
+            <?php 
+                        while ($row = $resultado->fetchArray())
+                        {
+                    ?>
+                            <option value="<?php echo $row['producto']?>"> <?php echo $row['producto']?> </option>
+                    <?php
+                        }
+                    ?> 
+          </select>
+        
+          <label for="cantidad">cantidad:</label>
+          <input type="number" class="form-control" id="cantidad_product" placeholder="Ingresa la cantidad" name="cantidad">
+          <br>
+          <input type="button" id="insert" class="btn btn-primary" onclick="insertar()"  value="Insertar"> 
+          <input type="button" id ="compra" class="btn btn-danger" onclick="limpiar()" value="Nueva compra"> 
+          <br>
+          <br>      
+          <h2>carrito de compras</h2>
+          <textarea class="form-control" rows="5" id="comment" name="comment" ></textarea>
+          <br>
+          <label for="totalCompra">Total:</label>
+          <input type="text" value="0" id="totalCompra" name="totalCompra" class="campodeshabilitado">
+          <br>
+          <label for="cantidad">pago:</label>
+          <input type="number" class="form-control" id="pago" placeholder="Ingresa el monto recibido" name="pago">
+          <br>
+          <input type="submit" class="btn btn-info" value="Pagar" onclick="validateForm()">
+        </div>
       </form>        
     </div>
   </body>
