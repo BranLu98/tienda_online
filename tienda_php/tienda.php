@@ -2,14 +2,6 @@
 <?php
     include 'conexion.php';
     $resultado = $db->query("SELECT * from producto");
-
-    if(isset($_GET['producto']))
-    {
-        $productos=$_GET['producto'];
-        echo $productos;
-        $precio=$_GET['precio_venta'];
-        echo $precio;
-    }
 ?>
 
 <!DOCTYPE html>
@@ -38,11 +30,16 @@
           <select class="form-control" id="producto" name="producto">
             <option value="0" selected>Selecciona un producto</option>
             <?php 
+                        
                         while ($row = $resultado->fetchArray())
                         {
+                            $existencias = $row["existencias"];
+                            if ($existencias>0)
+                            {
                     ?>
-                            <option value="<?php echo $row['precio_venta']?>"> <?php echo $row['producto']?> </option>
+                                <option value="<?php echo $row['precio_venta']?>"> <?php echo $row['producto']?></option>
                     <?php
+                            }
                         }
                     ?> 
           </select>
