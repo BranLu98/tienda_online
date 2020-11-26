@@ -1,12 +1,14 @@
 
 <?php
     include 'conexion.php';
-    $resultado = $db->query("SELECT id_producto, producto from producto");
+    $resultado = $db->query("SELECT * from producto");
 
-    if(isset($_GET['producto']))
+    if(isset($_GET['producto']) & isset($_GET['precio']))
     {
         $productos=$_GET['producto'];
         echo $productos;
+        $precio=$_GET['precio_venta'];
+        echo $precio;
     }
 ?>
 
@@ -39,7 +41,7 @@
                         while ($row = $resultado->fetchArray())
                         {
                     ?>
-                            <option value="<?php echo $row['producto']?>"> <?php echo $row['producto']?> </option>
+                            <option value="<?php echo $row['precio_venta']?>"> <?php echo $row['producto']?> </option>
                     <?php
                         }
                     ?> 
