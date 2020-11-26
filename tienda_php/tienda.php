@@ -3,7 +3,7 @@
     include 'conexion.php';
     $resultado = $db->query("SELECT * from producto");
 
-    if(isset($_GET['producto']) & isset($_GET['precio']))
+    if(isset($_GET['producto']))
     {
         $productos=$_GET['producto'];
         echo $productos;
