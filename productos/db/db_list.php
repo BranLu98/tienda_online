@@ -8,7 +8,7 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Nombre</th>
+                <th>Producto</th>
                 <th>Precio</th>
                 <th>Existencias</th>
                 <th>Descripcion</th>
@@ -24,7 +24,7 @@
     while ($row = $resultado->fetchArray()) {
        
         $id_producto = $row['id_producto'];
-        $nombre = $row['nombre'];
+        $producto = $row['producto'];
         $precio_venta = $row['precio_venta'];
         $existencias = $row['existencias'];
         $descripcion = $row['descripcion'];

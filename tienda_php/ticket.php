@@ -2,7 +2,19 @@
  $carrito = $_POST ['comment'];
  $total = $_POST ['totalCompra'];
  $pago = $_POST['pago'];
+ $productos=$_POST['producto'];
  $cambio =  $pago - $total;
+ 
+    
+ include 'conexion.php';
+    $resultado = $db->query("SELECT existencias from producto where id_producto=id_producto");
+    
+    $producto=$_GET['producto'];
+    $resta = $producto - $productos;
+    $db = new SQLite3('../../tienda.db');
+    $db->exec("UPDATE producto SET  existencias='$existencias' WHERE id_producto='$id_producto';");
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,7 +37,7 @@
       <br>
       <h2>Ticket:</h2>
       <p>-----------------------------------------------------------</p>
-      <p class="stiloslabel3">Tus compras son: <br><?php print("\n" . $carrito ."\n");?></p>
+      <p class="stiloslabel3">Tus compras son: <br><?php print("<br>" . $carrito ."<br>");?></p>
       <p>-----------------------------------------------------------</p>
       <p>El total a pagar : <?php print("$".$total);?></p>
       <p>Usted pago : <?php print("$".$pago);?></p>
