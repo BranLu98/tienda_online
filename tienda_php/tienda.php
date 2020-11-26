@@ -2,8 +2,10 @@
 <?php
     include 'conexion.php';
     $resultado = $db->query("SELECT * from producto");
+    if(isset($_GET['producto']))
+  
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="es">
   <head>

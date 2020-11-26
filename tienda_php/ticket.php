@@ -20,7 +20,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div">
+    <div>
       <h1 class="stiloslabel4">ABARROTES BALDERAS</h1>
       <br>
       <h2>Ticket:</h2>
