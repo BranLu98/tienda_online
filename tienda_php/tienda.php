@@ -1,15 +1,14 @@
-
 <?php
     include 'conexion.php';
     $resultado = $db->query("SELECT * from producto");
-    if(isset($_GET['producto']))
+    if(isset($_GET['producto']));
   
 ?>
  
 <!DOCTYPE html>
 <html lang="es">
   <head>
-
+    <script type="text/javascript" src="/js/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="css/sweetalert2.min.css" media="screen"/>
     <script type="text/javascript" src="js/carrito.js" charset="utf-8"></script>
@@ -44,6 +43,7 @@
                             }
                         }
                     ?> 
+            ?>
           </select>
         
           <label for="cantidad">cantidad:</label>

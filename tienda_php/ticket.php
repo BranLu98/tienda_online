@@ -5,7 +5,6 @@
  $productos=$_POST['producto'];
  $cambio =  $pago - $total;
  
-    
  include 'conexion.php';
     $resultado = $db->query("SELECT existencias from producto where id_producto=id_producto");
     
@@ -13,7 +12,6 @@
     $resta = $producto - $productos;
     $db = new SQLite3('../../tienda.db');
     $db->exec("UPDATE producto SET  existencias='$existencias' WHERE id_producto='$id_producto';");
-
 
 ?>
 <!DOCTYPE html>

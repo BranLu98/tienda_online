@@ -51,3 +51,27 @@ function validateForm() {
     Swal.fire("Error","el pago debe ser mayor a cero ", 'error' );
   }
 }
+
+ 
+function realizaProceso(existencias, cantidad){
+        var parametros = {
+                "existencias" : existencias,
+                "cantidad" : cantidad
+        };
+        $.ajax({
+                data:  parametros,
+                url:   'ejemplo_ajax_proceso.php',
+                type:  'post',
+                beforeSend: function () {
+                        $("#resultado").html("Procesando, espere por favor...");
+                },
+                success:  function (response) {
+                        $("#resultado").html(response);
+                }
+        });
+}
+ 
+
+ 
+
+ 

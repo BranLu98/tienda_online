@@ -14,13 +14,20 @@ INSERT INTO producto(producto, precio_venta, existencias, descripcion) values("A
 INSERT INTO producto(producto, precio_venta, existencias, descripcion) values("Rexona talco", "35", "30","Producto en polvo de 250g.");
 INSERT INTO producto(producto, precio_venta, existencias, descripcion) values("Agua bonafont", "12", "15","Producto liquido de 2l.");
 INSERT INTO producto(producto, precio_venta, existencias, descripcion) values("Fabuloso", "18", "20","Producto liquido de 1l.");
+INSERT INTO producto(producto, precio_venta, existencias, descripcion) values("Tostadas Charras", "22", "20","Producto de tostadas de 300g.");
 
 create table ticket(
        id_venta integer  not null primary key AUTOINCREMENT not null,
        fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP not null,
        cantidad_producto varchar (25) not null ,
        producto varchar (300) not null ,
-       total_producto  decimal (11,2) not null,
-       id_producto int not null,
-       FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+       total_producto  decimal (11,2) not null
+);
+INSERT INTO ticket(cantidad_producto,producto,total_producto) values("3", "Fabuloso", "54");
+INSERT INTO ticket(cantidad_producto,producto,total_producto) values("2", "Agua bonafont", "24");
+
+create table ventaTemporal(
+       id_productos integer not null primary key  not null,
+       cantidad_producto varchar (25) not null,
+       existencias integer not null
 );
