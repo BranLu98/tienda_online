@@ -10,6 +10,7 @@
     include 'conexion.php';  
     $db = new SQLite3("../tienda.db");
     
+
     $productos = explode(";",$idProductos);
     foreach ($productos as $producto) {
     $productoYCantidad = explode(":",$producto);
@@ -17,8 +18,8 @@
         continue;
     }
     $db->exec('UPDATE producto SET existencias= existencias - '.$productoYCantidad[1].' WHERE id_producto="'.$productoYCantidad[0].'"');
-    $resultado = $db->query("SELECT existencias FROM producto WHERE id_producto='.$productoYCantidad[0].'");
-    $db->exec("INSERT INTO ticket (cantidad_producto,producto,total_producto) VALUES ('$productoYCantidad[1]', '$productoYCantidad[0]', '$producto');");
+    $existencias = $db->query('SELECT  existencias= existencias - '.$productoYCantidad[1].'FROM producto WHERE id_producto="'.$productoYCantidad[0].'"');
+    $db->exec("INSERT INTO ticket (cantidad_producto,producto,total_producto) VALUES ('$productoYCantidad[1]', '$productoYCantidad[0]', '$existencias');");
    
 		
 		
@@ -57,7 +58,6 @@
       <p>-----------------------------------------------------------</p>
       <p class="stiloslabel5">Gracias por su compra</p>
       <p>-----------------------------------------------------------</p>
-      
     </div>
   </body>
 </html>
