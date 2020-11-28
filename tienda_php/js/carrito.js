@@ -3,10 +3,13 @@ function insertar(){
   var nombreProducto = $("#producto option:selected").text();
   var precio=$("#producto").val();
   var carrito = $("#comment").val();
+  var idProducto = $("#producto option:selected").data("id");
   
   
   if(cantidad<10 & cantidad >0 &  precio >0){
     $("#comment").text(carrito +cantidad + "\t"+nombreProducto +  "\t$" + precio + "\t$"+ parseFloat(cantidad)*parseFloat(precio)+"\n");
+    var idProductos = $("#idProductos").val();
+    $("#idProductos").val(idProductos + idProducto + ":" + cantidad + ";");
     llenaTotal(parseFloat(cantidad)* parseFloat(precio));
     $("#cantidad_product").val(" ")
     $("#producto").val("0")

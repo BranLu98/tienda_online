@@ -1,20 +1,27 @@
-<<?php
+<?php
+ $cantidad = $_POST ['cantidad_product'];
  $carrito = $_POST ['comment'];
  $total = $_POST ['totalCompra'];
  $pago = $_POST['pago'];
  $cambio =  $pago - $total;
+ $idProductos = isset($_POST['idProductos']) ? $_POST['idProductos'] : '';
  
-    include 'conexion.php';
-    $resultado = $db->query("SELECT existencias from producto where id_producto=id_producto");
-    
-    $producto=$_GET['producto'];
-    $db = new SQLite3('../../tienda.db');
-    $db->exec("UPDATE producto SET  existencias='$existencias' WHERE id_producto='$id_producto';");
-
+  include 'conexion.php';  
+    $db = new SQLite3("../tienda.db");
+    $productos = explode(";",$idProductos);
+    foreach ($productos as $producto) {
+    $productoYCantidad = explode(":",$producto);
+    if(!isset($productoYCantidad[0]) || !isset($productoYCantidad[1])){
+        continue;
+    }
+    $db->exec('UPDATE producto SET existencias= existencias - '.$productoYCantidad[1].' WHERE id_producto="'.$productoYCantidad[0].'"');
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <script type="text/javascript" src="js/carrito.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="css/sweetalert2.min.css" media="screen"/>
     <script type="text/javascript" src="js/carrito.js" charset="utf-8"></script>
@@ -31,11 +38,12 @@
     <div>
       <h1 class="stiloslabel4">ABARROTES BALDERAS</h1>
       <br>
+
       <h2>Ticket:</h2>
       <p>-----------------------------------------------------------</p>
       <p class="stiloslabel3">Tus compras son: <br><?php print("<br>" . $carrito ."<br>");?></p>
       <p>-----------------------------------------------------------</p>
-      <p>El total a pagar : <?php print("$".$total);?></p>
+      <p>El total a pagar : <?php print("$".$total);?></p> 
       <p>Usted pago : <?php print("$".$pago);?></p>
       <p>Su cambio es de : <?php print("$".$cambio);?></p>
       <p><?php echo "Fecha: ". date("d"). " del ". date("m"). " del ". date("Y") ;?></p>

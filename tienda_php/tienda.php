@@ -2,7 +2,8 @@
     include 'conexion.php';
     $resultado = $db->query("SELECT * from producto");
     if(isset($_GET['producto']));
-  
+    
+
 ?>
  
 <!DOCTYPE html>
@@ -37,7 +38,7 @@
                             if ($existencias>0)
                             {
                     ?>
-                                <option value="<?php echo $row['precio_venta']?>"> <?php echo $row['producto']?></option>
+                                <option data-id="<?php echo $row['id_producto']?>" value="<?php echo $row['precio_venta']?>"> <?php echo $row['producto']?></option>
                     <?php
                             }
                         }
@@ -46,7 +47,7 @@
           </select>
         
           <label for="cantidad">cantidad:</label>
-          <input type="number" class="form-control" id="cantidad_product" placeholder="Ingresa la cantidad" name="cantidad">
+          <input type="number" class="form-control" id="cantidad_product"  name="cantidad_product" placeholder="Ingresa la cantidad">
           <br>
           <input type="button" id="insert" class="btn btn-primary" onclick="insertar()"  value="Insertar"> 
           <input type="button" id ="compra" class="btn btn-danger" onclick="limpiar()" value="Nueva compra"> 
@@ -54,6 +55,7 @@
           <br>      
           <h2>carrito de compras</h2>
           <textarea class="form-control" rows="5" id="comment" name="comment" ></textarea>
+          <input type="hidden" id="idProductos" name="idProductos" value=""/>
           <br>
           <label for="totalCompra">Total:</label>
           <input type="text" value="0" id="totalCompra" name="totalCompra" class="campodeshabilitado">
