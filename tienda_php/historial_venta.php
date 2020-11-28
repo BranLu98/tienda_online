@@ -34,6 +34,7 @@
                         
                         while ($row = $resultado->fetchArray())
                         {
+                            
                         
                             {
                     ?>
@@ -43,10 +44,14 @@
                                     <td><?php echo $row['cantidad_producto']?></td>
                                     <td><?php echo $row['producto']?></td>
                                     <td><?php echo $row['total_producto']?></td>
-                                </tr>
+                                   
+                                </tr> 
+                     
+		           
                     <?php
                             }
                         }
+                       
                     ?> 
     </tbody>
   </table>

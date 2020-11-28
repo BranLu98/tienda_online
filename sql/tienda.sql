@@ -21,13 +21,6 @@ create table ticket(
        fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP not null,
        cantidad_producto varchar (25) not null ,
        producto varchar (300) not null ,
-       total_producto  decimal (11,2) not null
+       total_producto  integer not null
 );
-INSERT INTO ticket(cantidad_producto,producto,total_producto) values("3", "Fabuloso", "54");
-INSERT INTO ticket(cantidad_producto,producto,total_producto) values("2", "Agua bonafont", "24");
 
-create table ventaTemporal(
-       id_productos integer not null primary key  not null,
-       cantidad_producto varchar (25) not null,
-       existencias integer not null
-);

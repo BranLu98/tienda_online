@@ -5,9 +5,14 @@
  $pago = $_POST['pago'];
  $cambio =  $pago - $total;
  $idProductos = isset($_POST['idProductos']) ? $_POST['idProductos'] : '';
+ $productoS= $_POST['producto'];
+    
  
-  include 'conexion.php';  
+ 
+ 
+    include 'conexion.php';  
     $db = new SQLite3("../tienda.db");
+    
     $productos = explode(";",$idProductos);
     foreach ($productos as $producto) {
     $productoYCantidad = explode(":",$producto);
@@ -15,6 +20,11 @@
         continue;
     }
     $db->exec('UPDATE producto SET existencias= existencias - '.$productoYCantidad[1].' WHERE id_producto="'.$productoYCantidad[0].'"');
+    $resultado=$db->exec('SELECT existencias FROM producto  WHERE id_producto="'.$productoYCantidad[0].'"');
+    $db->exec("INSERT INTO ticket (cantidad_producto,producto,total_producto) VALUES ('$productoYCantidad[1]', '$productoYCantidad[0]', '$resultado');");
+   
+		
+		
 }
 ?>
 
