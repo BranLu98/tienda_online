@@ -8,7 +8,7 @@
 
     while ($row = $resultado->fetchArray()) {
         $id_producto = $row["id_producto"];
-        $nombre = $row["nombre"];
+        $nombre = $row["producto"];
         $precio_venta = $row["precio_venta"];
         $existencias = $row["existencias"];
         $descripcion = $row["descripcion"];
@@ -17,7 +17,7 @@
     $form = "
         <div class='form-group'>
             <label for='id_producto'>ID</label>
-            <input type='text' readonly class='form-control' id='id_producto' name='id_producto' aria-describedby='Id producto' value='$id_producto'>
+            <input type='text' readonly class='form-control' id='id_producto'disabled name='id_producto' aria-describedby='Id producto' value='$id_producto'>
         </div>
         <div class='form-group'>
             <label for='nombre'>Nombre</label>

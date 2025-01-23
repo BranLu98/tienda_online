@@ -18,7 +18,7 @@
 <body>
     <div class="container-fluid">
         <h1>View</h1>
-        <a href="index.php">Lista de personas</a>
+        <a href="index.php">Lista de productos</a>
 
         <form>
             <?php include 'db/db_view.php'; ?>

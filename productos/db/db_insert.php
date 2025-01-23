@@ -1,5 +1,5 @@
 <?php
-    $nombre = $_GET['nombre'];
+    $nombre = $_GET['producto'];
     $precio_venta = $_GET['precio_venta'];
     $existencias = $_GET['existencias'];
     $descripcion = $_GET['descripcion'];
