@@ -32,7 +32,7 @@
         $table = "
             <tr>
                 <td>$id_producto</td>
-                <td>$nombre</td>
+                <td>$producto</td>
                 <td>$precio_venta</td>
                 <td>$existencias</td>
                 <td>$descripcion</td>
